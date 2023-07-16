@@ -12,8 +12,8 @@ import page_library.SelectStays;
         @Test
         public void testSelectingDestination() {
             SelectStays selectStays = new SelectStays();
-            selectStays.selectDestination("Paris", 3);
-            String expText = "Paris City Center";
+            selectStays.selectDestination("seattle", 3);
+            String expText = "space needle";
             String desActText = selectStays.goingToButton.getAttribute("aria-label");
             Assert.assertTrue(desActText.contains(expText));
         }
@@ -21,17 +21,17 @@ import page_library.SelectStays;
         @Test
         public void testSelectingCheckInDate() {
             SelectStays selectStays = new SelectStays();
-            selectStays.selectCheckInDate("December", "2022", 22);
+            selectStays.selectCheckInDate("october", "2023", 22);
             String actText = selectStays.checkInButton.getAttribute("aria-label");
-            Assert.assertTrue(actText.contains("Check-in December 22, 2022"));
+            Assert.assertTrue(actText.contains("Check-in october 29, 2023"));
         }
 
         @Test
         public void testSelectingCheckOutDate() {
             SelectStays selectStays = new SelectStays();
-            selectStays.selectCheckOutDate("January", "2023", 2);
+            selectStays.selectCheckOutDate("november", "2023", 2);
             String actText = selectStays.checkOutButton.getAttribute("aria-label");
-            Assert.assertTrue(actText.contains("Check-out January 2, 2023"));
+            Assert.assertTrue(actText.contains("Check-out november 5, 2023"));
 
         }
 
@@ -67,7 +67,7 @@ import page_library.SelectStays;
             selectStays.safeClickOnElement(selectStays.room1AddChildrenNumButton);
             selectStays.selectChildAge("2");
             selectStays.selectChildAge("0");
-            selectStays.selectChildAge("12");
+            selectStays.selectChildAge("");
             selectStays.selectChildAge("11");
             selectStays.selectChildAge("6");
             selectStays.safeClickOnElement(selectStays.room1DoneButton);
@@ -79,9 +79,9 @@ import page_library.SelectStays;
         @Test
         public void testSelectStayHotel(){
             SelectStays selectStays = new SelectStays();
-            selectStays.selectDestination("Paris", 3);
-            selectStays.selectCheckInDate("December", "2022", 22);
-            selectStays.selectCheckOutDate("January", "2023", 2);
+            selectStays.selectDestination("seattle", 3);
+            selectStays.selectCheckInDate("october", "2023", 22);
+            selectStays.selectCheckOutDate("november", "2023", 2);
             selectStays.clickOnElement(selectStays.searchButton);
             webDriverWait.until(ExpectedConditions.visibilityOf(selectStays.FraserSuitesHarmonieParis));
             Assert.assertTrue(isElementVisible(selectStays.hotelsListButton));

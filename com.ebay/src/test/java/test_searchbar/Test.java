@@ -1,2 +1,4 @@
-package test_searchbar;public class Test {
+package test_searchbar;
+
+public class Test extends Basepage{
 }
